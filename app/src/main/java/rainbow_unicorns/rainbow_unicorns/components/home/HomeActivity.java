@@ -121,14 +121,6 @@ public class HomeActivity extends AppCompatActivity {
                     //TEMP
                     //TODO FIX IMAGE PATH
 
-                    //convert category value to image path string
-                    switch (categoryValue) {
-                        case 339:
-                            newCategory.setImagePath("category_image_bagel");
-                            break;
-                        //case
-                    }
-
                     if (alternate) {
                         newCategory.setImagePath("burgers_image");
                         alternate = false;
@@ -159,16 +151,18 @@ public class HomeActivity extends AppCompatActivity {
             displayFinalDecision();
         } else {
             ImageView img = (ImageView) findViewById(R.id.imageView);
-            switch (currCategory.getImagePath()) {
-                case "small_image":
-                    img.setImageResource(R.drawable.small_image);
-                    break;
-                case "small_emoji":
-                    img.setImageResource(R.drawable.small_emoji);
-                    break;
-                case "burgers_image":
-                    img.setImageResource(R.drawable.burgers_image);
-            }
+            img.setImageResource(currCategory.getImagePath());
+
+//            switch (currCategory.getImagePath()) {
+//                case "small_image":
+//                    img.setImageResource(R.drawable.small_image);
+//                    break;
+//                case "small_emoji":
+//                    img.setImageResource(R.drawable.small_emoji);
+//                    break;
+//                case "burgers_image":
+//                    img.setImageResource(R.drawable.burgers_image);
+//            }
         }
         return currCategory;
     }
@@ -181,6 +175,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @OnClick(R.id.imageButtonYes)
     public void onYesButtonClicked() {
+        decisionList.clear();
         storeInDecisionList();
         displayFinalDecision();
     }

@@ -10,10 +10,4 @@
     tools:context="rainbow_unicorns.rainbow_unicorns.components.decisions.DecisionsActivity">
 
 
-    <ExpandableListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/expandableListView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 </RelativeLayout>

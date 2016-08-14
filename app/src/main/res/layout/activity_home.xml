@@ -7,24 +7,73 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".HomeActivity">
+    tools:context=".components.home.HomeActivity">
 
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width= "@dimen/button_width"
-            android:layout_height= "@dimen/button_height"
-            android:src="@drawable/emoji_no" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:baselineAligned="false">
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width= "@dimen/button_width"
-            android:layout_height= "@dimen/button_height"
-            android:src="@drawable/emoji_yes" />
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
 
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width= "@dimen/button_width"
-            android:layout_height="@dimen/button_height"
-            android:src="@drawable/emoji_maybe" />
+                        <ImageButton
+                            android:id="@+id/imageButtonMaybe"
+                            android:layout_width="@dimen/button_width"
+                            android:layout_height="@dimen/button_height"
+                            android:src="@drawable/emoji_maybe"
+                            android:clickable="true"
+                            android:layout_margin="@dimen/button_width"
+                            android:layout_gravity="center" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
+
+                        <ImageButton
+                            android:id="@+id/imageButtonYes"
+                            android:layout_width="@dimen/button_width"
+                            android:layout_height="@dimen/button_height"
+                            android:src="@drawable/emoji_yes"
+                            android:clickable="true"
+                            android:onClick="onYesButtonClicked()"
+                            android:layout_margin="@dimen/button_width"
+                            android:layout_gravity="center" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
+
+                        <ImageButton
+                            android:id="@+id/imageButtonNo"
+                            android:layout_width="@dimen/button_width"
+                            android:layout_height="@dimen/button_height"
+                            android:src="@drawable/emoji_no"
+                            android:clickable="true"
+                            android:onClick="onNoButtonClicked()"
+                            android:layout_margin="@dimen/button_width"
+                            android:layout_gravity="center" />
+                </FrameLayout>
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

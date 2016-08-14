@@ -58,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
     private void onYesButtonClicked() {
         setRestaurant();
         storeInDecisionList();
-        //displayFinalDecision();
+        displayFinalDecision();
 
     }
 
@@ -77,6 +77,10 @@ public class HomeActivity extends AppCompatActivity {
 
     private void storeInDecisionList() {
         decisionList.add(currRest);
+    }
+
+    private void displayFinalDecision() {
+
     }
 
 

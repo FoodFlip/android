@@ -45,6 +45,7 @@ public class HomeActivity extends AppCompatActivity {
     private Restaurant setRestaurant() {
         currRest = allRest.peek();
         return currRest;
+
     }
 
 

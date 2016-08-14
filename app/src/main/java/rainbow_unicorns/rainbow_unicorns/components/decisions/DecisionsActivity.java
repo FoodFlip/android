@@ -11,6 +11,11 @@ public class DecisionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decisions);
+        init();
+    }
+
+    private void init() {
+
     }
 
 }

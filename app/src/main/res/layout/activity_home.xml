@@ -39,7 +39,23 @@
                             android:layout_gravity="center" />
                 </FrameLayout>
 
-                <FrameLayout
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/imageButtonYes"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:src="@drawable/small_emoji"
+                android:clickable="true"
+                android:layout_margin="@dimen/button_margin"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <FrameLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -55,21 +71,6 @@
                             android:layout_gravity="center" />
                 </FrameLayout>
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center">
-
-                        <ImageButton
-                            android:id="@+id/imageButtonYes"
-                            android:layout_width="@dimen/button_size"
-                            android:layout_height="@dimen/button_size"
-                            android:src="@drawable/small_emoji"
-                            android:clickable="true"
-                            android:layout_margin="@dimen/button_margin"
-                            android:layout_gravity="center" />
-                </FrameLayout>
         </LinearLayout>
 
         <ImageView

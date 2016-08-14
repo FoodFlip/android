@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rainbow_unicorns.rainbow_unicorns.R;
+import rainbow_unicorns.rainbow_unicorns.components.decisions.DecisionsActivity;
 import rainbow_unicorns.rainbow_unicorns.models.Category;
 import rainbow_unicorns.rainbow_unicorns.models.Restaurant;
 
@@ -98,11 +99,23 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void loadCategories() {
+        //
+        boolean alternate = true;
         for (Restaurant restaurant : restaurantList) {
             for (int categoryValue : restaurant.getCategories()) {
 
                 if (!catagoryExists(categoryValue)) {
                     Category newCategory = new Category(categoryValue);
+                    //TODO
+                    //TEMP
+                    //TODO FIX IMAGE PATH
+                    if (alternate) {
+                        newCategory.setImagePath("burgers_image");
+                        alternate = false;
+                    } else {
+                        newCategory.setImagePath("small_emoji");
+                        alternate = true;
+                    }
                     newCategory.addRestaurant(restaurant);
                     categoryList.add(newCategory);
 
@@ -126,11 +139,19 @@ public class HomeActivity extends AppCompatActivity {
             displayFinalDecision();
         } else {
             ImageView img = (ImageView) findViewById(R.id.imageView);
-            img.setImageResource(R.drawable.small_image);
+            switch (currCategory.getImagePath()) {
+                case "small_image":
+                    img.setImageResource(R.drawable.small_image);
+                    break;
+                case "small_emoji":
+                    img.setImageResource(R.drawable.small_emoji);
+                    break;
+                case "burgers_image":
+                    img.setImageResource(R.drawable.burgers_image);
+            }
         }
         return currCategory;
     }
-
 
     @OnClick(R.id.imageButtonReject)
     public void onRejectButtonClicked() {
@@ -156,13 +177,19 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void displayFinalDecision() {
-        //TODO jump to decisions activity
+        closeContextMenu();
+        DecisionsActivity displayDecisionsInterface = new DecisionsActivity();
+
     }
 
     private void loadNextOption() {
         System.out.println("load next option");
-        currCategory = categoryList.remove();
-        displayCategory();
+        if (categoryList.isEmpty()) {
+            displayFinalDecision();
+        } else {
+            currCategory = categoryList.remove();
+            displayCategory();
+        }
     }
 
 /*    @OnClick(R.id.btn_silly_test)

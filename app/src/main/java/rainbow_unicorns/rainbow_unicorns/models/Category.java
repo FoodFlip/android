@@ -1,7 +1,5 @@
 package rainbow_unicorns.rainbow_unicorns.models;
 
-import android.media.Image;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -11,7 +9,7 @@ import java.util.Queue;
 public class Category {
     private Queue<Restaurant> restaurants;
     private int categoryCode;
-    private Image image;
+    private String imagePath;
 
     //TODO add here
 
@@ -19,6 +17,14 @@ public class Category {
 
         restaurants = new LinkedList<>();
 
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String path) {
+        this.imagePath = path;
     }
 
     public int getCategoryCode() {

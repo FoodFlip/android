@@ -9,7 +9,7 @@ import java.util.Queue;
 public class Category {
     private Queue<Restaurant> restaurants;
     private int categoryCode;
-    private String imagePath;
+    private int imagePath;
 
     //TODO add here
 
@@ -19,11 +19,11 @@ public class Category {
 
     }
 
-    public String getImagePath() {
+    public int getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String path) {
+    public void setImagePath(int path) {
         this.imagePath = path;
     }
 

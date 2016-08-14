@@ -124,9 +124,101 @@ public class HomeActivity extends AppCompatActivity {
                     //convert category value to image path string
                     switch (categoryValue) {
                         case 339:
-                            newCategory.setImagePath("category_image_bagel");
+                            newCategory.setImagePath(R.drawable.category_image_bagel);
                             break;
-                        //case
+                        case 340:
+                            newCategory.setImagePath(R.drawable.category_image_bakeries);
+                            break;
+                        case 341:
+                            newCategory.setImagePath(R.drawable.category_image_breweries);
+                            break;
+                        case 342:
+                            newCategory.setImagePath(R.drawable.category_image_cafes);
+                            break;
+                        case 343:
+                            newCategory.setImagePath(R.drawable.category_image_dessert);
+                            break;
+                        case 344:
+                            newCategory.setImagePath(R.drawable.category_image_icecream);
+                            break;
+                        case 345:
+                            newCategory.setImagePath(R.drawable.category_image_internet);
+                            break;
+                        case 346:
+                            newCategory.setImagePath(R.drawable.category_image_juice);
+                            break;
+                        case 348:
+                            newCategory.setImagePath(R.drawable.category_image_american);
+                            break;
+                        case 349:
+                            newCategory.setImagePath(R.drawable.category_image_bbq);
+                            break;
+                        case 350:
+                            newCategory.setImagePath(R.drawable.category_image_buffets);
+                            break;
+                        case 351:
+                            newCategory.setImagePath(R.drawable.category_image_american);
+                            break;
+                        case 352:
+                            newCategory.setImagePath(R.drawable.category_image_chinese);
+                            break;
+                        case 353:
+                            newCategory.setImagePath(R.drawable.category_image_delis);
+                            break;
+                        case 354:
+                            newCategory.setImagePath(R.drawable.category_image_diners);
+                            break;
+                        case 355:
+                            newCategory.setImagePath(R.drawable.category_image_fastfood);
+                            break;
+                        case 356:
+                            newCategory.setImagePath(R.drawable.category_image_french);
+                            break;
+                        case 357:
+                            newCategory.setImagePath(R.drawable.category_image_indian);
+                            break;
+                        case 358:
+                            newCategory.setImagePath(R.drawable.category_image_italian);
+                            break;
+                        case 359:
+                            newCategory.setImagePath(R.drawable.category_image_japanese);
+                            break;
+                        case 360:
+                            newCategory.setImagePath(R.drawable.category_image_korean);
+                            break;
+                        case 361:
+                            newCategory.setImagePath(R.drawable.category_image_mexican);
+                            break;
+                        case 362:
+                            newCategory.setImagePath(R.drawable.category_image_middleeastern);
+                            break;
+                        case 363:
+                            newCategory.setImagePath(R.drawable.category_image_italian);
+                            break;
+                        case 364:
+                            newCategory.setImagePath(R.drawable.category_image_seafood);
+                            break;
+                        case 365:
+                            newCategory.setImagePath(R.drawable.category_image_steakhouses);
+                            break;
+                        case 366:
+                            newCategory.setImagePath(R.drawable.category_image_sushi);
+                            break;
+                        case 367:
+                            newCategory.setImagePath(R.drawable.category_image_thai);
+                            break;
+                        case 368:
+                            newCategory.setImagePath(R.drawable.category_image_vegan);
+                            break;
+                        case 457:
+                            newCategory.setImagePath(R.drawable.category_image_chinese);
+                            break;
+                        case 458:
+                            newCategory.setImagePath(R.drawable.category_image_foodtrucks);
+                            break;
+                        case 464:
+                            newCategory.setImagePath(R.drawable.category_image_international);
+                            break;
                     }
 
                     if (alternate) {

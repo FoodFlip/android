@@ -1,14 +1,15 @@
 package rainbow_unicorns.rainbow_unicorns.models;
 
+import java.util.Queue;
+
 public class Restaurant {
     public String name;
-    public String address;
     // public List<String> categories;
     public double dist;
     public String phoneNumber;
     public String address;
     public String hours;
-    public int[] categories;
+    public Queue<Integer> categories;
 
     public Restaurant() {
     }
@@ -25,14 +26,14 @@ public class Restaurant {
     }
 
     public String getAddress() {
-        return getAddress();
+        return address;
     }
 
     public String getHours() {
         return hours;
     }
 
-    public int[] getCategories() {
+    public Queue<Integer> getCategories() {
         return categories;
     }
 }

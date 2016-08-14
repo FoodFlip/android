@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 import butterknife.BindView;
@@ -16,11 +14,6 @@ import butterknife.OnClick;
 import rainbow_unicorns.rainbow_unicorns.R;
 import rainbow_unicorns.rainbow_unicorns.models.Category;
 import rainbow_unicorns.rainbow_unicorns.models.Restaurant;
-import rainbow_unicorns.rainbow_unicorns.services.foodApi.FoodApiService;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import timber.log.Timber;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -30,14 +23,14 @@ public class HomeActivity extends AppCompatActivity {
 
     private Queue<Restaurant> restaurantList;
 
-    private Restaurant currCategory;
+    private Category currCategory;
 
-    private Queue<Restaurant> decisionList;
+    private Queue<Category> decisionList;
 
     private Queue<Category> categoryList;
 
-    @BindView(R.id.textView)
-    TextView textView;
+    @BindView(R.id.imageView)
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +44,10 @@ public class HomeActivity extends AppCompatActivity {
         decisionList = new LinkedList<>();
         setAllRestaurants();
 
+        //temp
+        loadTempRestaurants();
+        loadCategories();
+
     }
 
     public void setAllRestaurants() {
@@ -59,40 +56,77 @@ public class HomeActivity extends AppCompatActivity {
         //loadCategories();
     }
 
+    private Restaurant makeTempRest() {
+        Restaurant temp = new Restaurant();
+        temp.name = "tempName";
+        return temp;
+    }
 
-    private void loadRestaurants() {
+    private void loadTempRestaurants() {
         restaurantList = new LinkedList<>();
-        restaurantList.add(new Restaurant());
-        restaurantList.add(new Restaurant());
-        restaurantList.add(new Restaurant());
+        for (int i = 0; i < 7; i++) {
+            Restaurant rest = makeTempRest();
+            rest.name.concat(Integer.toString(i));
+            rest.categories = new LinkedList<>();
+            rest.categories.add(124);
+            rest.categories.add(156);
+            restaurantList.add(rest);
+        }
+
+    }
+
+    private boolean catagoryExists(int catVal) {
+        if (categoryList == null) {
+            categoryList = new LinkedList<>();
+            return false;
+        }
+        for (Category cat : categoryList) {
+            if (cat.getCategoryCode() == catVal) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void updateCategory(Restaurant restIn, int catValIn) {
+        for (Category cat : categoryList) {
+            if (cat.getCategoryCode() == catValIn) {
+                cat.addRestaurant(restIn);
+                break;
+            }
+        }
     }
 
     private void loadCategories() {
         for (Restaurant restaurant : restaurantList) {
-            for (int category : restaurant.getCategories()) {
+            for (int categoryValue : restaurant.getCategories()) {
 
-/*                if(categoryList.contains(category) ){
+                if (!catagoryExists(categoryValue)) {
+                    Category newCategory = new Category(categoryValue);
+                    newCategory.addRestaurant(restaurant);
+                    categoryList.add(newCategory);
 
-                    restaurant.getName();
+                } else {
+                    updateCategory(restaurant, categoryValue);
                 }
-                categoryMap.put( category  );*/
             }
         }
     }
 
     private void readData() {
-        loadRestaurants();
+        loadTempRestaurants();
         loadCategories();
         // get category names
         // get category pictures
     }
 
-    private Restaurant displayRestaurant() {
-        currCategory = restaurantList.peek();
+    private Category displayCategory() {
+        currCategory = categoryList.peek();
         if (currCategory == null) {
             displayFinalDecision();
         } else {
-            textView.setText(currCategory.getName());
+            ImageView img = (ImageView) findViewById(R.id.imageView);
+            img.setImageResource(R.drawable.small_image);
         }
         return currCategory;
     }
@@ -106,14 +140,12 @@ public class HomeActivity extends AppCompatActivity {
 
     @OnClick(R.id.imageButtonYes)
     public void onYesButtonClicked() {
-        displayRestaurant();
         storeInDecisionList();
         displayFinalDecision();
     }
 
     @OnClick(R.id.imageButtonMaybe)
     public void onMaybeButtonClicked() {
-        displayRestaurant();
         storeInDecisionList();
         loadNextOption();
     }
@@ -129,11 +161,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private void loadNextOption() {
         System.out.println("load next option");
-        currCategory = restaurantList.remove();
-        displayRestaurant();
+        currCategory = categoryList.remove();
+        displayCategory();
     }
 
-    @OnClick(R.id.btn_silly_test)
+/*    @OnClick(R.id.btn_silly_test)
     public void onSillyTestButtonClicked() {
         Timber.i("hello i'm here");
         FoodApiService.get()
@@ -158,5 +190,5 @@ public class HomeActivity extends AppCompatActivity {
                         // TODO: Set this data so that it is accessible.
                     }
                 });
-    }
+    }*/
 }

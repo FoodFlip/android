@@ -8,8 +8,9 @@ import rx.Observable;
 
 public interface FoodApi {
 
-    String SERVICE_ENDPOINT = "https://rainbow-unicorns.herokuapp.com";
+    //    String SERVICE_ENDPOINT = "https://rainbow-unicorns.herokuapp.com";
+    String SERVICE_ENDPOINT = "https://caee5ea5.ngrok.io";
 
-    @GET("/restaurants")
+    @GET("/factualInfos")
     Observable<List<Restaurant>> getRestaurants();
 }

@@ -6,24 +6,24 @@ import java.util.Queue;
 /**
  * Created by Kelsey on 8/14/16.
  */
-public class Category {
+public class RestaurantCategory {
     private Queue<Restaurant> restaurants;
     private int categoryCode;
-    private String imagePath;
+    private int imagePath;
 
     //TODO add here
 
-    public Category(int categoryCode) {
+    public RestaurantCategory(int categoryCode) {
 
         restaurants = new LinkedList<>();
 
     }
 
-    public String getImagePath() {
+    public int getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String path) {
+    public void setImagePath(int path) {
         this.imagePath = path;
     }
 

@@ -12,4 +12,8 @@ public class DecisionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decisions);
     }
+
+    //public void addDecidedRestaurant(Restaurant ){
+
+    //}
 }

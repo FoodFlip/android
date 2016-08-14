@@ -9,8 +9,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".HomeActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width= "@dimen/button_width"
+            android:layout_height= "@dimen/button_height"
+            android:src="@drawable/emoji_no" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width= "@dimen/button_width"
+            android:layout_height= "@dimen/button_height"
+            android:src="@drawable/emoji_yes" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width= "@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:src="@drawable/emoji_maybe" />
+
 </RelativeLayout>

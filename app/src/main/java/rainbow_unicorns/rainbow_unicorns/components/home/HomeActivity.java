@@ -83,9 +83,4 @@ public class HomeActivity extends AppCompatActivity {
     private void displayFinalDecision() {
 
     }
-
-
-
-
-
 }

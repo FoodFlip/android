@@ -34,7 +34,7 @@
                             android:id="@+id/imageButtonReject"
                             android:layout_width="@dimen/button_size"
                             android:layout_height="@dimen/button_size"
-                            android:src="@drawable/small_emoji"
+                            android:src="@drawable/reject_face"
                             android:clickable="true"
                             android:layout_margin="@dimen/button_margin"
                             android:layout_gravity="center" />
@@ -50,7 +50,7 @@
                 android:id="@+id/imageButtonYes"
                 android:layout_width="@dimen/button_size"
                 android:layout_height="@dimen/button_size"
-                android:src="@drawable/small_emoji"
+                android:src="@drawable/love_face"
                 android:clickable="true"
                 android:layout_margin="@dimen/button_margin"
                 android:layout_gravity="center" />
@@ -66,7 +66,7 @@
                             android:id="@+id/imageButtonMaybe"
                             android:layout_width="@dimen/button_size"
                             android:layout_height="@dimen/button_size"
-                            android:src="@drawable/small_emoji"
+                            android:src="@drawable/yes_face"
                             android:clickable="true"
                             android:layout_margin="@dimen/button_margin"
                             android:layout_gravity="center" />

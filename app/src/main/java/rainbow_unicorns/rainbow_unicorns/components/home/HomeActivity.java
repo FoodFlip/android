@@ -124,108 +124,98 @@ public class HomeActivity extends AppCompatActivity {
                         case 339:
                             newRestaurantCategory.setImagePath(R.drawable.category_image_bagel);
                             break;
-//                        case 340:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_bakeries);
-//                            break;
-//                        case 341:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_breweries);
-//                            break;
-//                        case 342:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_cafes);
-//                            break;
-//                        case 343:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_dessert);
-//                            break;
-//                        case 344:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_icecream);
-//                            break;
-//                        case 345:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_internet);
-//                            break;
-//                        case 346:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_juice);
-//                            break;
-//                        case 348:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_american);
-//                            break;
-//                        case 349:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_bbq);
-//                            break;
-//                        case 350:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_buffets);
-//                            break;
-//                        case 351:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_american);
-//                            break;
-//                        case 352:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_chinese);
-//                            break;
-//                        case 353:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_delis);
-//                            break;
-//                        case 354:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_diners);
-//                            break;
-//                        case 355:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_fastfood);
-//                            break;
-//                        case 356:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_french);
-//                            break;
-//                        case 357:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_indian);
-//                            break;
-//                        case 358:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_italian);
-//                            break;
-//                        case 359:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_japanese);
-//                            break;
-//                        case 360:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_korean);
-//                            break;
-//                        case 361:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_mexican);
-//                            break;
-//                        case 362:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_middleeastern);
-//                            break;
-//                        case 363:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_italian);
-//                            break;
-//                        case 364:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_seafood);
-//                            break;
-//                        case 365:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_steakhouses);
-//                            break;
-//                        case 366:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_sushi);
-//                            break;
-//                        case 367:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_thai);
-//                            break;
-//                        case 368:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_vegan);
-//                            break;
-//                        case 457:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_chinese);
-//                            break;
-//                        case 458:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_foodtrucks);
-//                            break;
-//                        case 464:
-//                            newRestaurantCategory.setImagePath(R.drawable.category_image_international);
-//                            break;
+                        case 340:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_bakeries);
+                            break;
+                        case 341:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_breweries);
+                            break;
+                        case 342:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_cafes);
+                            break;
+                        case 343:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_dessert);
+                            break;
+                        case 344:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_icecream);
+                            break;
+                        case 345:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_internet);
+                            break;
+                        case 346:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_juice);
+                            break;
+                        case 348:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_american);
+                            break;
+                        case 349:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_bbq);
+                            break;
+                        case 350:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_buffets);
+                            break;
+                        case 351:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_american);
+                            break;
+                        case 352:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_chinese);
+                            break;
+                        case 353:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_delis);
+                            break;
+                        case 354:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_diners);
+                            break;
+                        case 355:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_fastfood);
+                            break;
+                        case 356:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_french);
+                            break;
+                        case 357:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_indian);
+                            break;
+                        case 358:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_italian);
+                            break;
+                        case 359:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_japanese);
+                            break;
+                        case 360:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_korean);
+                            break;
+                        case 361:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_mexican);
+                            break;
+                        case 362:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_middleeastern);
+                            break;
+                        case 363:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_italian);
+                            break;
+                        case 364:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_seafood);
+                            break;
+                        case 365:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_steakhouses);
+                            break;
+                        case 366:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_sushi);
+                            break;
+                        case 367:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_thai);
+                            break;
+                        case 368:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_vegan);
+                            break;
+                        case 457:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_chinese);
+                            break;
+                        case 458:
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_foodtrucks);
+                            break;
                     }
 
-//                    if (alternate) {
-//                        newRestaurantCategory.setImagePath("burgers_image");
-//                        alternate = false;
-//                    } else {
-//                        newRestaurantCategory.setImagePath("small_emoji");
-//                        alternate = true;
-//                    }
                     newRestaurantCategory.addRestaurant(restaurant);
                     restaurantCategoryList.add(newRestaurantCategory);
 

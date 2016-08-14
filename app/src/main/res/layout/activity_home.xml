@@ -18,6 +18,23 @@
             android:layout_alignParentStart="true"
             android:baselineAligned="false">
 
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
+
+                        <ImageButton
+                            android:id="@+id/imageButtonReject"
+                            android:layout_width="@dimen/button_size"
+                            android:layout_height="@dimen/button_size"
+                            android:src="@drawable/small_emoji"
+                            android:clickable="true"
+                            android:layout_margin="@dimen/button_margin"
+                            android:layout_gravity="center" />
+                </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -46,33 +63,15 @@
                             android:layout_height="@dimen/button_size"
                             android:src="@drawable/small_emoji"
                             android:clickable="true"
-                            android:onClick="onYesButtonClicked()"
-                            android:layout_margin="@dimen/button_margin"
-                            android:layout_gravity="center" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center">
-
-                        <ImageButton
-                            android:id="@+id/imageButtonNo"
-                            android:layout_width="@dimen/button_size"
-                            android:layout_height="@dimen/button_size"
-                            android:src="@drawable/small_emoji"
-                            android:clickable="true"
-                            android:onClick="onNoButtonClicked()"
                             android:layout_margin="@dimen/button_margin"
                             android:layout_gravity="center" />
                 </FrameLayout>
         </LinearLayout>
 
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:id="@+id/textView"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
 

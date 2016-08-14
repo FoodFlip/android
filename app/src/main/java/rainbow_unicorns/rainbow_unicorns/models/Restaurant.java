@@ -8,7 +8,7 @@ public class Restaurant {
     public double dist;
     public String phoneNumber;
     public String address;
-    public String hours;
+    //    public String hours;
     public Queue<Integer> categories;
 
     public Restaurant() {
@@ -29,9 +29,9 @@ public class Restaurant {
         return address;
     }
 
-    public String getHours() {
-        return hours;
-    }
+//    public String getHours() {
+//        return hours;
+//    }
 
     public Queue<Integer> getCategories() {
         return categories;

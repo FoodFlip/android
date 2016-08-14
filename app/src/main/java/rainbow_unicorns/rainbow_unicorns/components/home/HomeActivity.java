@@ -63,14 +63,14 @@ public class HomeActivity extends AppCompatActivity {
 
     private void init() {
         decisionList = new LinkedList<>();
-        setAllRestaurants();
+
 
         //temp
-        loadTempRestaurants();
-        loadCategories();
+        //loadTempRestaurants();
+        //loadCategories();
 
     }
-
+/*
     public void setAllRestaurants() {
         //TODO
         //from backend
@@ -81,18 +81,11 @@ public class HomeActivity extends AppCompatActivity {
         Restaurant temp = new Restaurant();
         temp.name = "tempName";
         return temp;
-    }
+    }*/
 
-    private void loadTempRestaurants() {
-        restaurantList = new LinkedList<>();
-        for (int i = 0; i < 7; i++) {
-            Restaurant rest = makeTempRest();
-            rest.name.concat(Integer.toString(i));
-            rest.categories = new LinkedList<>();
-            rest.categories.add(124);
-            rest.categories.add(156);
-            restaurantList.add(rest);
-        }
+    private void loadRestaurants(List<Restaurant> list) {
+        restaurantList = (Queue) list;
+        loadCategories();
     }
 
     private boolean catagoryExists(int catVal) {
@@ -244,8 +237,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void readData() {
-        loadTempRestaurants();
-        loadCategories();
+        //loadRestaurants();
+        //loadCategories();
         // get category names
         // get category pictures
     }
@@ -322,13 +315,16 @@ public class HomeActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        Timber.e("error", e);
+                        Timber.e("error");
                     }
 
                     @Override
                     public void onNext(List<Restaurant> restaurants) {
                         Timber.i("I made it");
                         Timber.i(String.valueOf(restaurants.size()));
+
+                        //set
+                        loadRestaurants(restaurants);
                         // TODO: Set this data so that it is accessible.
                     }
                 });

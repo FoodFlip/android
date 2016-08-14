@@ -26,11 +26,11 @@
 
                         <ImageButton
                             android:id="@+id/imageButtonMaybe"
-                            android:layout_width="@dimen/button_width"
-                            android:layout_height="@dimen/button_height"
+                            android:layout_width="@dimen/button_size"
+                            android:layout_height="@dimen/button_size"
                             android:src="@drawable/emoji_maybe"
                             android:clickable="true"
-                            android:layout_margin="@dimen/button_width"
+                            android:layout_margin="@dimen/button_margin"
                             android:layout_gravity="center" />
                 </FrameLayout>
 
@@ -42,12 +42,12 @@
 
                         <ImageButton
                             android:id="@+id/imageButtonYes"
-                            android:layout_width="@dimen/button_width"
-                            android:layout_height="@dimen/button_height"
+                            android:layout_width="@dimen/button_size"
+                            android:layout_height="@dimen/button_size"
                             android:src="@drawable/emoji_yes"
                             android:clickable="true"
                             android:onClick="onYesButtonClicked()"
-                            android:layout_margin="@dimen/button_width"
+                            android:layout_margin="@dimen/button_margin"
                             android:layout_gravity="center" />
                 </FrameLayout>
 
@@ -59,12 +59,12 @@
 
                         <ImageButton
                             android:id="@+id/imageButtonNo"
-                            android:layout_width="@dimen/button_width"
-                            android:layout_height="@dimen/button_height"
+                            android:layout_width="@dimen/button_size"
+                            android:layout_height="@dimen/button_size"
                             android:src="@drawable/emoji_no"
                             android:clickable="true"
                             android:onClick="onNoButtonClicked()"
-                            android:layout_margin="@dimen/button_width"
+                            android:layout_margin="@dimen/button_margin"
                             android:layout_gravity="center" />
                 </FrameLayout>
         </LinearLayout>

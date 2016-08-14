@@ -17,6 +17,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton imageButton;
     private Queue<Restaurant> allRest;
     private Restaurant currRest;
+    private Queue<Restaurant> decisionList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,28 +25,39 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
     }
 
-    public void loadAllRestaurants() {
-        allRest = new LinkedList<Restaurant>();
+    public void setAllRestaurants() {
+        //TODO
+        //from backend
+    }
+
+    private void init() {
+        decisionList = new LinkedList<>();
+        loadAllRestaurants();
+    }
+
+    private void loadAllRestaurants() {
+        allRest = new LinkedList<>();
         allRest.add(new Restaurant("temp"));
         allRest.add(new Restaurant("temp2"));
         allRest.add(new Restaurant("temp3"));
     }
 
     private Restaurant setRestaurant() {
-        currRest = allRest.remove();
+        currRest = allRest.peek();
         return currRest;
     }
 
 
     @OnClick(R.id.imageButtonNo)
     private void onNoButtonClicked() {
-        //loadNextOption();
+        loadNextOption();
     }
+
 
     @OnClick(R.id.imageButtonYes)
     private void onYesButtonClicked() {
         setRestaurant();
-        //storeInDecisionList();
+        storeInDecisionList();
         //displayFinalDecision();
 
     }
@@ -53,8 +65,18 @@ public class HomeActivity extends AppCompatActivity {
     @OnClick(R.id.imageButtonMaybe)
     private void onMaybeButtonClicked() {
         setRestaurant();
-        //storeInDecisionList();
+        storeInDecisionList();
         //loadNextOption();
+    }
+
+    //??
+    private void loadNextOption() {
+        //currRest = allRest.
+
+    }
+
+    private void storeInDecisionList() {
+        decisionList.add(currRest);
     }
 
 

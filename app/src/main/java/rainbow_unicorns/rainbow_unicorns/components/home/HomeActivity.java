@@ -66,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
             for (int category : restaurant.getCategories()) {
 
 /*                if(categoryList.contains(category) ){
-                    
+
                     restaurant.getName();
                 }
                 categoryMap.put( category  );*/

@@ -1,14 +1,17 @@
 package rainbow_unicorns.rainbow_unicorns.components.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import butterknife.BindView;
@@ -16,8 +19,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rainbow_unicorns.rainbow_unicorns.R;
 import rainbow_unicorns.rainbow_unicorns.components.decisions.DecisionsActivity;
-import rainbow_unicorns.rainbow_unicorns.models.Category;
 import rainbow_unicorns.rainbow_unicorns.models.Restaurant;
+import rainbow_unicorns.rainbow_unicorns.models.RestaurantCategory;
+import rainbow_unicorns.rainbow_unicorns.services.dataSource.DataSourceProvider;
+import rainbow_unicorns.rainbow_unicorns.services.foodApi.FoodApiService;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -27,11 +36,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private Queue<Restaurant> restaurantList;
 
-    private Category currCategory;
+    private RestaurantCategory currRestaurantCategory;
 
-    private Queue<Category> decisionList;
+    private Queue<RestaurantCategory> decisionList;
 
-    private Queue<Category> categoryList;
+    private Queue<RestaurantCategory> restaurantCategoryList;
 
     @BindView(R.id.imageView)
     ImageView imageView;
@@ -84,15 +93,14 @@ public class HomeActivity extends AppCompatActivity {
             rest.categories.add(156);
             restaurantList.add(rest);
         }
-
     }
 
     private boolean catagoryExists(int catVal) {
-        if (categoryList == null) {
-            categoryList = new LinkedList<>();
+        if (restaurantCategoryList == null) {
+            restaurantCategoryList = new LinkedList<>();
             return false;
         }
-        for (Category cat : categoryList) {
+        for (RestaurantCategory cat : restaurantCategoryList) {
             if (cat.getCategoryCode() == catVal) {
                 return true;
             }
@@ -101,7 +109,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void updateCategory(Restaurant restIn, int catValIn) {
-        for (Category cat : categoryList) {
+        for (RestaurantCategory cat : restaurantCategoryList) {
             if (cat.getCategoryCode() == catValIn) {
                 cat.addRestaurant(restIn);
                 break;
@@ -116,120 +124,117 @@ public class HomeActivity extends AppCompatActivity {
             for (int categoryValue : restaurant.getCategories()) {
 
                 if (!catagoryExists(categoryValue)) {
-                    Category newCategory = new Category(categoryValue);
+                    RestaurantCategory newRestaurantCategory = new RestaurantCategory(categoryValue);
                     //TODO
-                    //TEMP
-                    //TODO FIX IMAGE PATH
-
                     //convert category value to image path string
                     switch (categoryValue) {
                         case 339:
-                            newCategory.setImagePath(R.drawable.category_image_bagel);
+                            newRestaurantCategory.setImagePath(R.drawable.category_image_bagel);
                             break;
-                        case 340:
-                            newCategory.setImagePath(R.drawable.category_image_bakeries);
-                            break;
-                        case 341:
-                            newCategory.setImagePath(R.drawable.category_image_breweries);
-                            break;
-                        case 342:
-                            newCategory.setImagePath(R.drawable.category_image_cafes);
-                            break;
-                        case 343:
-                            newCategory.setImagePath(R.drawable.category_image_dessert);
-                            break;
-                        case 344:
-                            newCategory.setImagePath(R.drawable.category_image_icecream);
-                            break;
-                        case 345:
-                            newCategory.setImagePath(R.drawable.category_image_internet);
-                            break;
-                        case 346:
-                            newCategory.setImagePath(R.drawable.category_image_juice);
-                            break;
-                        case 348:
-                            newCategory.setImagePath(R.drawable.category_image_american);
-                            break;
-                        case 349:
-                            newCategory.setImagePath(R.drawable.category_image_bbq);
-                            break;
-                        case 350:
-                            newCategory.setImagePath(R.drawable.category_image_buffets);
-                            break;
-                        case 351:
-                            newCategory.setImagePath(R.drawable.category_image_american);
-                            break;
-                        case 352:
-                            newCategory.setImagePath(R.drawable.category_image_chinese);
-                            break;
-                        case 353:
-                            newCategory.setImagePath(R.drawable.category_image_delis);
-                            break;
-                        case 354:
-                            newCategory.setImagePath(R.drawable.category_image_diners);
-                            break;
-                        case 355:
-                            newCategory.setImagePath(R.drawable.category_image_fastfood);
-                            break;
-                        case 356:
-                            newCategory.setImagePath(R.drawable.category_image_french);
-                            break;
-                        case 357:
-                            newCategory.setImagePath(R.drawable.category_image_indian);
-                            break;
-                        case 358:
-                            newCategory.setImagePath(R.drawable.category_image_italian);
-                            break;
-                        case 359:
-                            newCategory.setImagePath(R.drawable.category_image_japanese);
-                            break;
-                        case 360:
-                            newCategory.setImagePath(R.drawable.category_image_korean);
-                            break;
-                        case 361:
-                            newCategory.setImagePath(R.drawable.category_image_mexican);
-                            break;
-                        case 362:
-                            newCategory.setImagePath(R.drawable.category_image_middleeastern);
-                            break;
-                        case 363:
-                            newCategory.setImagePath(R.drawable.category_image_italian);
-                            break;
-                        case 364:
-                            newCategory.setImagePath(R.drawable.category_image_seafood);
-                            break;
-                        case 365:
-                            newCategory.setImagePath(R.drawable.category_image_steakhouses);
-                            break;
-                        case 366:
-                            newCategory.setImagePath(R.drawable.category_image_sushi);
-                            break;
-                        case 367:
-                            newCategory.setImagePath(R.drawable.category_image_thai);
-                            break;
-                        case 368:
-                            newCategory.setImagePath(R.drawable.category_image_vegan);
-                            break;
-                        case 457:
-                            newCategory.setImagePath(R.drawable.category_image_chinese);
-                            break;
-                        case 458:
-                            newCategory.setImagePath(R.drawable.category_image_foodtrucks);
-                            break;
-                        case 464:
-                            newCategory.setImagePath(R.drawable.category_image_international);
-                            break;
+//                        case 340:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_bakeries);
+//                            break;
+//                        case 341:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_breweries);
+//                            break;
+//                        case 342:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_cafes);
+//                            break;
+//                        case 343:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_dessert);
+//                            break;
+//                        case 344:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_icecream);
+//                            break;
+//                        case 345:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_internet);
+//                            break;
+//                        case 346:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_juice);
+//                            break;
+//                        case 348:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_american);
+//                            break;
+//                        case 349:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_bbq);
+//                            break;
+//                        case 350:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_buffets);
+//                            break;
+//                        case 351:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_american);
+//                            break;
+//                        case 352:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_chinese);
+//                            break;
+//                        case 353:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_delis);
+//                            break;
+//                        case 354:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_diners);
+//                            break;
+//                        case 355:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_fastfood);
+//                            break;
+//                        case 356:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_french);
+//                            break;
+//                        case 357:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_indian);
+//                            break;
+//                        case 358:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_italian);
+//                            break;
+//                        case 359:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_japanese);
+//                            break;
+//                        case 360:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_korean);
+//                            break;
+//                        case 361:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_mexican);
+//                            break;
+//                        case 362:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_middleeastern);
+//                            break;
+//                        case 363:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_italian);
+//                            break;
+//                        case 364:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_seafood);
+//                            break;
+//                        case 365:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_steakhouses);
+//                            break;
+//                        case 366:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_sushi);
+//                            break;
+//                        case 367:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_thai);
+//                            break;
+//                        case 368:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_vegan);
+//                            break;
+//                        case 457:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_chinese);
+//                            break;
+//                        case 458:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_foodtrucks);
+//                            break;
+//                        case 464:
+//                            newRestaurantCategory.setImagePath(R.drawable.category_image_international);
+//                            break;
                     }
 
-                    if (alternate) {
-                        newCategory.setImagePath("burgers_image");
-                        alternate = false;
-                    } else {
-                        newCategory.setImagePath("small_emoji");
-                        alternate = true;
-                    }
-                    newCategory.addRestaurant(restaurant);
-                    categoryList.add(newCategory);
+//                    if (alternate) {
+//                        newRestaurantCategory.setImagePath("burgers_image");
+//                        alternate = false;
+//                    } else {
+//                        newRestaurantCategory.setImagePath("small_emoji");
+//                        alternate = true;
+//                    }
+                    newRestaurantCategory.addRestaurant(restaurant);
+                    restaurantCategoryList.add(newRestaurantCategory);
 
                 } else {
                     updateCategory(restaurant, categoryValue);
@@ -245,24 +250,19 @@ public class HomeActivity extends AppCompatActivity {
         // get category pictures
     }
 
-    private Category displayCategory() {
-        currCategory = categoryList.peek();
-        if (currCategory == null) {
+    private RestaurantCategory displayCategory() {
+        currRestaurantCategory = restaurantCategoryList.peek();
+        if (currRestaurantCategory == null) {
             displayFinalDecision();
         } else {
             ImageView img = (ImageView) findViewById(R.id.imageView);
-            switch (currCategory.getImagePath()) {
-                case "small_image":
-                    img.setImageResource(R.drawable.small_image);
-                    break;
-                case "small_emoji":
-                    img.setImageResource(R.drawable.small_emoji);
-                    break;
-                case "burgers_image":
-                    img.setImageResource(R.drawable.burgers_image);
-            }
+            img.setImageResource(currRestaurantCategory.getImagePath());
+
+            TextView name = (TextView) findViewById(R.id.categoryText);
+            name.setText(String.valueOf(currRestaurantCategory.getCategoryCode()));
+
         }
-        return currCategory;
+        return currRestaurantCategory;
     }
 
     @OnClick(R.id.imageButtonReject)
@@ -273,6 +273,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @OnClick(R.id.imageButtonYes)
     public void onYesButtonClicked() {
+        decisionList.clear();
         storeInDecisionList();
         displayFinalDecision();
     }
@@ -285,26 +286,28 @@ public class HomeActivity extends AppCompatActivity {
     //??
 
     private void storeInDecisionList() {
-        decisionList.add(currCategory);
+        decisionList.add(currRestaurantCategory);
     }
 
     private void displayFinalDecision() {
-        closeContextMenu();
-        DecisionsActivity displayDecisionsInterface = new DecisionsActivity();
+        DataSourceProvider.getInstance().setRestaurantCategories((List<RestaurantCategory>) decisionList);
 
+
+        Intent intent = new Intent(this, DecisionsActivity.class);
+        startActivity(intent);
     }
 
     private void loadNextOption() {
         System.out.println("load next option");
-        if (categoryList.isEmpty()) {
+        if (restaurantCategoryList.isEmpty()) {
             displayFinalDecision();
         } else {
-            currCategory = categoryList.remove();
+            currRestaurantCategory = restaurantCategoryList.remove();
             displayCategory();
         }
     }
 
-/*    @OnClick(R.id.btn_silly_test)
+    @OnClick(R.id.btn_silly_test)
     public void onSillyTestButtonClicked() {
         Timber.i("hello i'm here");
         FoodApiService.get()
@@ -331,6 +334,7 @@ public class HomeActivity extends AppCompatActivity {
                 });
     }
 
+    /*
     @Override
     public void onStart() {
         super.onStart();

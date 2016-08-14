@@ -1,19 +1,19 @@
 package rainbow_unicorns.rainbow_unicorns.models;
 
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
 
 /**
  * Created by Kelsey on 8/14/16.
  */
-public class Category {
-    private Queue<Restaurant> restaurants;
+public class RestaurantCategory {
+    private List<Restaurant> restaurants;
     private int categoryCode;
     private int imagePath;
 
     //TODO add here
 
-    public Category(int categoryCode) {
+    public RestaurantCategory(int categoryCode) {
 
         restaurants = new LinkedList<>();
 
@@ -31,7 +31,7 @@ public class Category {
         return categoryCode;
     }
 
-    public Queue<Restaurant> getRestaurants() {
+    public List<Restaurant> getRestaurants() {
         return restaurants;
     }
 

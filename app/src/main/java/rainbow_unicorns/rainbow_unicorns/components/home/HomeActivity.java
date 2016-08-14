@@ -2,9 +2,9 @@ package rainbow_unicorns.rainbow_unicorns.components.home;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -27,23 +27,25 @@ public class HomeActivity extends AppCompatActivity {
 
     private Queue<Restaurant> decisionList;
 
-    @BindView(R.id.editText)
-    EditText editText;
+    @BindView(R.id.textView)
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+        init();
+    }
+
+    private void init() {
+        decisionList = new LinkedList<>();
+        setAllRestaurants();
     }
 
     public void setAllRestaurants() {
         //TODO
         //from backend
-    }
-
-    private void init() {
-        decisionList = new LinkedList<>();
         loadAllRestaurants();
     }
 
@@ -54,31 +56,31 @@ public class HomeActivity extends AppCompatActivity {
         allRest.add(new Restaurant("temp3"));
     }
 
-    private Restaurant setRestaurant() {
+    private Restaurant displayRestaurant() {
         currRest = allRest.peek();
-        editText.setText(currRest.getName());
+        textView.setText(currRest.getName());
         return currRest;
 
     }
 
 
-    @OnClick(R.id.imageButtonNo)
-    private void onNoButtonClicked() {
+    @OnClick(R.id.imageButtonReject)
+    public void onRejectButtonClicked() {
         loadNextOption();
     }
 
 
     @OnClick(R.id.imageButtonYes)
-    private void onYesButtonClicked() {
-        setRestaurant();
+    public void onYesButtonClicked() {
+        displayRestaurant();
         storeInDecisionList();
         displayFinalDecision();
 
     }
 
     @OnClick(R.id.imageButtonMaybe)
-    private void onMaybeButtonClicked() {
-        setRestaurant();
+    public void onMaybeButtonClicked() {
+        displayRestaurant();
         storeInDecisionList();
         loadNextOption();
     }
@@ -95,7 +97,7 @@ public class HomeActivity extends AppCompatActivity {
     private void loadNextOption() {
         System.out.println("load next option");
         currRest = allRest.remove();
-        setRestaurant();
+        displayRestaurant();
     }
 
 

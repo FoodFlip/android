@@ -2,27 +2,39 @@ package rainbow_unicorns.rainbow_unicorns.components.home;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rainbow_unicorns.rainbow_unicorns.R;
 import rainbow_unicorns.rainbow_unicorns.models.Restaurant;
 
 public class HomeActivity extends AppCompatActivity {
+
     private ImageView appImageView;
+
     private ImageButton imageButton;
+
     private Queue<Restaurant> allRest;
+
     private Restaurant currRest;
+
     private Queue<Restaurant> decisionList;
+
+    @BindView(R.id.editText)
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
     }
 
     public void setAllRestaurants() {
@@ -44,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private Restaurant setRestaurant() {
         currRest = allRest.peek();
+        editText.setText(currRest.getName());
         return currRest;
 
     }
@@ -67,23 +80,23 @@ public class HomeActivity extends AppCompatActivity {
     private void onMaybeButtonClicked() {
         setRestaurant();
         storeInDecisionList();
-        //loadNextOption();
+        loadNextOption();
     }
-
     //??
-    private void loadNextOption() {
-        //currRest = allRest.
-
-    }
 
     private void storeInDecisionList() {
         decisionList.add(currRest);
     }
 
     private void displayFinalDecision() {
-
+        //TODO jump to decisions activity
     }
 
+    private void loadNextOption() {
+        System.out.println("load next option");
+        currRest = allRest.remove();
+        setRestaurant();
+    }
 
 
 

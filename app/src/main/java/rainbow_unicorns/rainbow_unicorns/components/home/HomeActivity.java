@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import butterknife.BindView;
@@ -15,6 +16,11 @@ import butterknife.OnClick;
 import rainbow_unicorns.rainbow_unicorns.R;
 import rainbow_unicorns.rainbow_unicorns.models.Category;
 import rainbow_unicorns.rainbow_unicorns.models.Restaurant;
+import rainbow_unicorns.rainbow_unicorns.services.foodApi.FoodApiService;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -127,4 +133,30 @@ public class HomeActivity extends AppCompatActivity {
         displayRestaurant();
     }
 
+    @OnClick(R.id.btn_silly_test)
+    public void onSillyTestButtonClicked() {
+        Timber.i("hello i'm here");
+        FoodApiService.get()
+                .getRestaurants()
+                .subscribeOn(Schedulers.newThread()) // TODO: Ideally, these should be in its own file.
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<List<Restaurant>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Timber.e("error", e);
+                    }
+
+                    @Override
+                    public void onNext(List<Restaurant> restaurants) {
+                        Timber.i("I made it");
+                        Timber.i(String.valueOf(restaurants.size()));
+                        // TODO: Set this data so that it is accessible.
+                    }
+                });
+    }
 }

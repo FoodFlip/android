@@ -1,17 +1,17 @@
 package rainbow_unicorns.rainbow_unicorns.models;
 
 public class Restaurant {
-    private String name;
-    private double dist;
-    private String phoneNumber;
-    private String address;
-    private String hours;
-    private int[] categories;
+    public String name;
+    public String address;
+    // public List<String> categories;
+    public double dist;
+    public String phoneNumber;
+    public String address;
+    public String hours;
+    public int[] categories;
 
     public Restaurant() {
-
     }
-
     public String getName() {
         return this.name;
     }
